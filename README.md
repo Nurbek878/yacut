@@ -1,37 +1,52 @@
-Клонировать репозиторий и перейти в него в командной строке:
+# Cервис YaCut
 
-```
-git clone 
-```
+Проект YaCut — это сервис укорачивания ссылок. Его назначение — ассоциировать длинную пользовательскую ссылку с короткой, которую предлагает сам пользователь или предоставляет сервис.
 
+###  Установка и настройки
+  * Шаг первый: клонируем репозиторий
+```python
+git clone git@github.com:Nurbek878/yacut.git
 ```
+ * Переходим в папку с проектом 
+```sh 
 cd yacut
-```
-
-Cоздать и активировать виртуальное окружение:
-
-```
-python3 -m venv venv
-```
-
-* Если у вас Linux/macOS
-
-    ```
-    source venv/bin/activate
-    ```
-
-* Если у вас windows
-
-    ```
-    source venv/scripts/activate
-    ```
-
-Установить зависимости из файла requirements.txt:
-
-```
-python3 -m pip install --upgrade pip
-```
-
-```
+``` 
+* Создаем и активируем виртуальное окружение 
+```sh 
+python -m venv venv 
+source venv/bin/activate 
+``` 
+* Обновляем менеджер пакетов pip
+```sh 
+pip install --upgrade pip 
+``` 
+* Устанавливаем необходимые зависимости 
+```sh 
 pip install -r requirements.txt
-```
+``` 
+* В корне проекта создаем .env файл
+```sh 
+FLASK_APP=yacut
+FLASK_ENV=development
+DATABASE_URI=sqlite:///db.sqlite3
+SECRET_KEY=YOUR_SECRET_KEY
+``` 
+* Создаем файл базы данных и таблицы в нем
+```sh 
+flask shell
+>>> from yacut import db
+>>> db.create_all()
+``` 
+* Запускаем Flask-приложение командой
+```sh 
+flask run
+``` 
+
+### Стек
+-   [Python](https://www.python.org/)
+-   [Flask](https://flask.palletsprojects.com/)
+-   [SQLAlchemy](https://www.sqlalchemy.org/)
+
+### Автор
+
+- [@nurbek878](https://github.com/Nurbek878)
