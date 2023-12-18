@@ -2,6 +2,7 @@ import os
 import string
 
 CHARACTERS = string.ascii_letters + string.digits
+LENGTH_SHORT_LINK = 16
 LOCAL_URL = 'http://localhost/'
 
 

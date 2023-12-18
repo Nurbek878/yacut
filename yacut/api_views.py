@@ -1,20 +1,11 @@
 from http import HTTPStatus
-
 from flask import jsonify, request
-
-from settings import CHARACTERS
 
 from . import app, db
 from .error_handlers import InvalidAPIUsage
 from .models import URLMap
+from .utils import check_custom_id
 from .views import get_unique_short_id
-
-
-def check_custom_id(custom_id):
-    for i in custom_id:
-        if i not in CHARACTERS:
-            return False
-    return len(custom_id) <= 16
 
 
 @app.route('/api/id/', methods=['POST'])

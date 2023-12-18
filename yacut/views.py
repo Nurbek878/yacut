@@ -1,17 +1,11 @@
-import random
-
 from flask import flash, redirect, render_template
 
-from settings import CHARACTERS, LOCAL_URL
+from settings import LOCAL_URL
 
 from . import app, db
 from .forms import YacutForm
 from .models import URLMap
-
-
-def get_unique_short_id():
-    short_link = ''.join(random.choice(CHARACTERS) for i in range(6))
-    return short_link
+from .utils import get_unique_short_id
 
 
 @app.route('/', methods=['GET', 'POST'])
